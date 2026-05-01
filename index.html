@@ -86,6 +86,10 @@
 
 <section class="cards container">
     <div class="cards-slider">
+        <div class="card reveal overlay">
+            <img src="img/sale_may26.jpg" alt="">
+            <a href="https://max.ru/u/f9LHodD0cOLLO56Pg7vEwAVw5K3R0H4GGqid9VYylftqPax6a25-YHRjHqs" target="_blank" class="btn overlay-btn">ПОЛУЧИТЬ СКИДКУ</a>
+        </div>
         <div class="card reveal">
             <img src="img/card1.jpg" alt="">
         </div>
@@ -151,7 +155,6 @@
         </div>
 
         <div class="price-list reveal">
-            <!-- Дисклеймер в начале -->
             <div class="price-disclaimer">
                 Указанные цены не являются публичной офертой. Окончательная стоимость определяется после детального обсуждения.
             </div>
@@ -184,7 +187,6 @@
             <div class="price-item"><span>Наложение разгрузочной повязки</span><span>500-1500 ₽</span></div>
             <div class="price-item"><span>Обработка аппаратом АФС с противовоспалительным препаратом</span><span>1000 ₽</span></div>
             <div class="price-item"><span>Повторный осмотр (со сменой повязки)</span><span>1000 ₽</span></div>
-            <!-- Дисклеймер в конце -->
             <div class="price-disclaimer">
                 Указанные цены не являются публичной офертой. Окончательная стоимость определяется после детального обсуждения.
             </div>
@@ -264,7 +266,8 @@
 
 <script>
     const reveals = document.querySelectorAll('.reveal');
-    window.addEventListener('scroll', () => {
+
+    function checkReveals() {
         reveals.forEach(el => {
             const windowHeight = window.innerHeight;
             const elementTop = el.getBoundingClientRect().top;
@@ -272,7 +275,12 @@
                 el.classList.add('active');
             }
         });
-    });
+    }
+
+    // Сразу показываем все видимые элементы
+    checkReveals();
+
+    window.addEventListener('scroll', checkReveals);
 
     const burger = document.getElementById('burger');
     const nav = document.getElementById('nav');
